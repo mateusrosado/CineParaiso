@@ -1,0 +1,19 @@
+<h1>Index</h1>
+
+<hr />
+
+<?php 
+    echo'Chegamos ao HomeController e disparamos a action index';
+    foreach($this->view->dados as $indice => $filme)
+    {
+        echo '<div>';
+        echo $filme['id'] . ' - ' . $filme['titulo'] . ' - ' . $filme['horario'];
+
+        echo '<form action="/filme" method="post" style="display:inline;">';
+        echo '<input type="hidden" name="id" value="' . htmlspecialchars($filme['id']) . '">';
+        echo '<button type="submit">Ver mais</button>';
+        echo '</form>';
+
+        echo '</div>';
+    }
+?>
