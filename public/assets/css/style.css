@@ -157,11 +157,18 @@ aside a:hover{
   cursor: pointer;
   margin: 0.8rem;
 }
+.assento input[type=checkbox]:disabled{
+  cursor: default;
+}
+.assento input[type=checkbox].reservado + svg circle,
 .assento input[type=checkbox]:disabled + svg circle{
-    fill: #617694;
+    fill: #4c5c72;
 }
 .assento input[type=checkbox]:checked + svg circle {
     fill: #3ca55c;
+}
+#alterar .assento input[type=checkbox]:checked + svg circle {
+    fill: #ffce00;
 }
 
 aside a,
@@ -243,7 +250,7 @@ form button:hover {
  color: #d8001d;
 }
 
-.input.alterar  :focus, input.alterar:valid {
+.input.alterar:focus, input.alterar:valid {
  border: 1.5px solid #ffce00;
 }
 

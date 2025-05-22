@@ -33,7 +33,7 @@
                                 <div class="fileira">
                             <?php endif; ?>
                             <div class="assento">
-                                <input type="checkbox" name="cadeira_id[]" value="<?= $c->id ?>"/>
+                                <input type="checkbox" name="cadeira_id[]" value="<?= $c->id ?>" <?= in_array($c->id, $cadeirasReservadas) ? 'class="reservado"' : '' ?>/>
                                 <svg viewBox="0 0 35.6 35.6">
                                     <circle cx="17.8" cy="17.8" r="17.8"></circle>
                                     <text x="50%" y="50%" text-anchor="middle" dominant-baseline="central"><?= htmlspecialchars($c->codigo) ?></text>
@@ -54,7 +54,7 @@
                         <label class="user-label">Email</label>
                     </div>
 
-                    <button type="submit" id="btn-reservar" disabled>Reservar</button>
+                    <button type="submit" id="btn-reservar" class="alterar" disabled>Reservar</button>
                 </form>
             </div>
         </div>
@@ -75,10 +75,10 @@
                 alert('Email inválido.');
                 return false;
             }
-            // if (!algumSelecionado) {
-            //     alert('Selecione pelo menos um assento.');
-            //     return false;
-            // }
+            if (!algumSelecionado) {
+                alert('Selecione pelo menos um assento.');
+                return false;
+            }
             return true;
         }
 

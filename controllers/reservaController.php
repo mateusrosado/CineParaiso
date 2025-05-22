@@ -85,19 +85,20 @@ class ReservaController {
         $filme_id = $_POST['filme_id'] ?? ($_GET['filme_id'] ?? null);
 
         $reservas = [];
+        if ($filme_id) {
+            $reservas = $this->reservaDAO->listarPorFilme($filme_id);
+        }
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $cadeirasSelecionadas = $_POST['cadeira_id'] ?? [];
 
             $reservasUsuario = $this->reservaDAO->buscarReservas($nome, $email, $filme_id);
-            $idsReservadasUsuario = array_map(fn($r) => $r['cadeira_id'], $reservasUsuario);
+            $idsReservadasUsuario = array_map(fn($r) => $r->cadeira_id, $reservasUsuario);
 
             if (!empty($reservasUsuario)) {
                 $todasDisponiveis = true;
                 foreach ($cadeirasSelecionadas as $cadeira_id) {
-                    if (
-                        !in_array($cadeira_id, $idsReservadasUsuario) &&
-                        !$this->cadeiraDAO->estaDisponivel($filme_id, $cadeira_id)
+                    if (!in_array($cadeira_id, $idsReservadasUsuario) && !$this->cadeiraDAO->estaDisponivel($filme_id, $cadeira_id)
                     ) {
                         $todasDisponiveis = false;
                         break;
@@ -110,6 +111,7 @@ class ReservaController {
                         $reserva = new Reserva(null, $nome, $email, $filme_id, $cadeira_id);
                         $this->reservaDAO->reservar($reserva);
                     }
+                    $reservas = $this->reservaDAO->listarPorFilme($filme_id);
                     $msg = "Reservas atualizadas com sucesso!";
                 } else {
                     $msg = "Uma ou mais das cadeiras escolhidas já estão ocupadas. Nenhuma alteração foi feita.";
@@ -117,10 +119,6 @@ class ReservaController {
             } else {
                 $msg = "Nome ou email incorretos, ou nenhuma reserva encontrada.";
             }
-        }
-
-        if ($nome && $email && $filme_id) {
-            $reservas = $this->reservaDAO->buscarReservas($nome, $email, $filme_id);
         }
 
         include __DIR__ . '/../view/alterar.php';
