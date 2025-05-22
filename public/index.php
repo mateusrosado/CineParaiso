@@ -1,21 +1,23 @@
 <?php
-require "../vendor/autoload.php";
-require "../app/routes/router.php";
+require_once __DIR__ . '/../core/database.php';
+require_once __DIR__ . '/../dao/FilmeDAO.php';
+require_once __DIR__ . '/../dao/CadeiraDAO.php';
+require_once __DIR__ . '/../dao/ReservaDAO.php';
+require_once __DIR__ . '/../controllers/ReservaController.php';
 
-try {
-  $uri = parse_url($_SERVER["REQUEST_URI"])["path"];
-  $request = $_SERVER["REQUEST_METHOD"];
+$controller = $_GET['controller'] ?? 'Reserva';
+$action = $_GET['action'] ?? 'index';
 
-  if (!isset($router[$request])) {
-    throw new Exception("A rota não existe");
-  }
+$controllerClass = $controller . 'Controller';
 
-  if (!array_key_exists($uri, $router[$request])) {
-    throw new Exception("A rota não existe");
-  }
+if (class_exists($controllerClass)) {
+    $c = new $controllerClass();
 
-  $controller = $router[$request][$uri];
-  $controller();
-} catch (Exception $e) {
-  $e->getMessage();
+    if (method_exists($c, $action)) {
+        $c->$action();
+    } else {
+        echo "Ação '$action' não encontrada.";
+    }
+} else {
+    echo "Controller '$controllerClass' não encontrado.";
 }
