@@ -5,6 +5,7 @@ Projeto desenvolvido para o **TDE3 da disciplina de Desenvolvimento Web Back-End
 ## Descrição
 
 O **Cine Paraíso** é uma aplicação web que permite aos usuários:
+- Listar filmes
 - Reservar assentos para um filme
 - Alterar reservas existentes
 - Cancelar reservas
