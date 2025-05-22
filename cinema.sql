@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 22/05/2025 às 22:58
+-- Tempo de geração: 22/05/2025 às 23:09
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -64,8 +64,8 @@ CREATE TABLE `filmes` (
 --
 
 INSERT INTO `filmes` (`id`, `titulo`, `descricao`, `capa_url`, `data_exibicao`, `horario`) VALUES
-(1, 'Thunderbolts', 'Os Thunderbolts são uma equipe de anti-heróis da Marvel. A equipe consiste principalmente de supervilões retificados.', 'https://www.ucicinemas.com.br/Content/Upload/Filmes/Posters/10979/filme_10979.jpg', '2025-05-21', '21:00:00'),
-(2, 'Lilo & Stitch', 'Live-action do famoso clássico de animação da Disney, Lilo & Stitch, onde Stitch, o experimento 626, é um alienígena expressivo que foi adotado como animal de estimação por Lilo e juntos eles descobrem o significado de família.', 'https://www.ucicinemas.com.br/Content/Upload/Filmes/Posters/12562/filme_12562.jpg', '2025-05-21', '22:00:00');
+(1, 'Thunderbolts', 'Os Thunderbolts são uma equipe de anti-heróis da Marvel. A equipe consiste principalmente de supervilões retificados.', 'https://www.ucicinemas.com.br/Content/Upload/Filmes/Posters/10979/filme_10979.jpg', '2025-05-22', '22:00:00'),
+(2, 'Lilo & Stitch', 'Live-action do famoso clássico de animação da Disney, Lilo & Stitch, onde Stitch, o experimento 626, é um alienígena expressivo que foi adotado como animal de estimação por Lilo e juntos eles descobrem o significado de família.', 'https://www.ucicinemas.com.br/Content/Upload/Filmes/Posters/12562/filme_12562.jpg', '2025-05-22', '19:00:00');
 
 -- --------------------------------------------------------
 
@@ -80,14 +80,6 @@ CREATE TABLE `reservas` (
   `filme_id` int(11) NOT NULL,
   `cadeira_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Despejando dados para a tabela `reservas`
---
-
-INSERT INTO `reservas` (`id`, `nome`, `email`, `filme_id`, `cadeira_id`) VALUES
-(23, 'carlos', 'c@r.los', 1, 5),
-(45, 'mat', 'm@te.us', 1, 4);
 
 --
 -- Índices para tabelas despejadas
@@ -128,13 +120,13 @@ ALTER TABLE `cadeiras`
 -- AUTO_INCREMENT de tabela `filmes`
 --
 ALTER TABLE `filmes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de tabela `reservas`
 --
 ALTER TABLE `reservas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- Restrições para tabelas despejadas
