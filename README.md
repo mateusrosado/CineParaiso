@@ -20,3 +20,11 @@ Todo o sistema foi construído seguindo a **arquitetura MVC (Model-View-Controll
 - **HTML/CSS/JavaScript** (interface e interatividade)
 - **MySQL** (banco de dados)
 - **MVC** (estruturação do código)
+
+---
+
+##Autores
+
+- Isaac Oliveira Menezes
+- Mateus José Rosado Ferreira
+- Nilza Kelly Campos Fernandes
