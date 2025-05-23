@@ -1,7 +1,7 @@
 <?php
-require_once __DIR__ . '/../dao/FilmeDAO.php';
-require_once __DIR__ . '/../dao/CadeiraDAO.php';
-require_once __DIR__ . '/../dao/ReservaDAO.php';
+require_once __DIR__ . '/../models/dao/FilmeDAO.php';
+require_once __DIR__ . '/../models/dao/CadeiraDAO.php';
+require_once __DIR__ . '/../models/dao/ReservaDAO.php';
 
 class ReservaController {
     private $filmeDAO;

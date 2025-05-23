@@ -1,6 +1,6 @@
 <?php
-require_once __DIR__ . '/../core/database.php';
-require_once __DIR__ . '/../models/Cadeira.php';
+require_once __DIR__ . '/../../core/database.php';
+require_once __DIR__ . '/../Cadeira.php';
 
 class CadeiraDAO {
     private $conn;
